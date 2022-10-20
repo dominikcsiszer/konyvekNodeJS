@@ -1,0 +1,11 @@
+{{#each rows}}
+<nav aria-label="breadcrumb mb-5 mt-3">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Főoldal</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{this.cim}}</li>
+  </ol>
+</nav>
+
+<h1>{{this.cim}}</h1>
+<p class="text-muted">{{this.kiadas_datum}}</p>
+{{/each}}

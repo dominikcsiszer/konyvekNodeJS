@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-between align-items-center">
+    <h1>Könyvek webáruház</h1>
+    <div>
+        <a href="/" class="fs-4 me-2"><i class="bi bi-grid"></i></a>
+        <a href="/?view=list" class="fs-4"><i class="bi bi-list-task"></i></a>
+    </div>
+</div>
+{{#if view}}
+    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cím</th>
+                <th scope="col">Szerző</th>
+                <th scope="col">Kiadó</th>
+                <th scope="col">Műfaj</th>
+                <th scope="col">Ára (Ft)</th>
+                <th scope="col" class="text-end">Műveletek</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each rows}}
+        <tr>
+            <th scope="col">{{this.konyv_id}}</th>
+            <td>{{this.cim}}</td>
+            <td>{{this.szerzo_nev}}</td>
+            <td>{{this.kiado_nev}}</td>
+            <td>{{this.megnevezes}}</td>
+            <td>{{this.ar}}</td>
+            <td class="text-end"><a href="/view/{{this.konyv_id}}" class="btn btn-primary"><i class="bi bi-eye"></i> Megtekintés</a></td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+{{else}}
+<div class="row">
+    {{#each rows}}
+        <div class="col-sm-12 col-md-4 col-lg-3 mt-3">
+            <div class="card">
+                <img src="../public/upload/{{this.kep}}" class="card-img-top" alt="Kép a(z) {{this.cim}} könyvről.">
+                <div class="card-body">
+                    <h5 class="card-title">{{this.cim}}</h5>
+                    <p class="card-text">{{this.cim}} {{this.szerzo_nev}} {{this.megnevezes}}e.</p> 
+                    <ul class="list-group list-group-flush"><li class="list-group-item">Szerző: {{this.szerzo_nev}}</li>
+                        <li class="list-group-item">Múfaja: {{this.megnevezes}}</li>
+                        <li class="list-group-item">Kiadás Dátuma: {{this.kiadas_datum}}</li>
+                        <li class="list-group-item">Kiadó: {{this.kiado_nev}}</li>
+                        <li class="list-group-item">Ára: {{this.ar}} Ft</li>
+                    </ul>
+                    <a href="/view/{{this.konyv_id}}" class="btn btn-primary mt-4"><i class="bi bi-eye"></i> Megtekintés</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+{{/if}}
